@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Angular JS</title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
-	<body>
-		<ul>
-		  <li>
-		    <span>Nexus S</span>
-		    <p>
-		      Fast just got faster with Nexus S.
-		    </p>
-		  </li>
-		  <li>
-		    <span>Motorola XOOM™ with Wi-Fi</span>
-		    <p>
-		      The Next, Next Generation tablet. :)
-		    </p>
-		  </li>
-		</ul>
+		<script src="modules/app.js"></script>
+	</head>
+	<body ng-app="myApp" ng-init="fname='Ivan';lname='S';numbers=[0,1,2,3,4,5,6,7,8,9]">
+		<p>The area is {{fname + ' ' + lname}}</p>
+		<p>The area is <span ng-bind="fname + ' ' + lname"></span></p>
+		<p ng-repeat="number in numbers">The number is {{number}}</p>
 	</body>
 </html>
