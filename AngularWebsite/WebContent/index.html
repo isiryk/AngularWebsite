@@ -5,9 +5,35 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
 		<script src="modules/app.js"></script>
 	</head>
-	<body ng-app="myApp" ng-init="fname='Ivan';lname='S';numbers=[0,1,2,3,4,5,6,7,8,9]">
-		<p>The area is {{fname + ' ' + lname}}</p>
-		<p>The area is <span ng-bind="fname + ' ' + lname"></span></p>
-		<p ng-repeat="number in numbers">The number is {{number}}</p>
+	<body ng-app="myApp" ng-controller="MyController">
+		<div>
+			<button ng-click="toggleSpy()">Click here</button>
+			<p ng-show="isSpy">Spy Mode Engaged</p>
+			<p ng-hide="isSpy">Spy Mode Disengaged</p>
+		</div>
+		<p ng-hide="isSpy">My name is {{fname + ' ' + lname}}</p>
+		<p ng-hide="isSpy">{{fullname()}}</p>
+		<p ng-show="isSpy">The codename is {{codeName}}</p>		
+		<div ng-repeat="employee in employees | limitTo:2 | orderBy:'-salary'">
+		    <p>--------------------------------</p>
+			<p>
+				firstname is {{employee.fname | uppercase | limitTo:4}}
+			</p>
+			<p>
+				lastname is {{employee.lname | lowercase}}
+			</p>
+			<p>
+				salary is {{employee.salary | currency}}
+			</p>
+		</div>
+		<div>
+			<button ng-click="count=count+1">Click here</button>
+			<p>Count = {{count}}</p>
+		</div>
+		<div>
+			<button ng-click="toggleSpy()">Click here</button>
+			<p ng-show="isSpy">Spy Mode Engaged</p>
+			<p ng-hide="isSpy">Spy Mode Disengaged</p>
+		</div>
 	</body>
 </html>
