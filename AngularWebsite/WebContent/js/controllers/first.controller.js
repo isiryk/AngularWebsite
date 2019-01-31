@@ -1,7 +1,6 @@
-var app = angular.module('myApp', []);
+var mainApp = angular.module('mainApp');
 
-app.controller('MyController', ['$scope', function($scope){
-	
+mainApp.controller("FirstController", ['$scope', function($scope){
 	$scope.fname = 'Ivan';
 	$scope.lname = 'S';
 	
@@ -21,18 +20,18 @@ app.controller('MyController', ['$scope', function($scope){
 	$scope.employees = [
 		{
 			fname : 'Roger',
-			lname : 'Smith',
+			lastname : 'Smith',
 			salary : '50000'
 		},
 		{
 			fname : 'Sam',
-			lname : 'Smith',
+			lastname : 'Smith',
 			salary : '30000'
 		},
 		{
 			fname : 'Will',
-			lname : 'Smith',
+			lastname : 'Smith',
 			salary : '40000'
 		},
 	]
-}])
+}]);

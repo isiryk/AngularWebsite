@@ -3,37 +3,45 @@
 	<head>
 		<title>Angular JS</title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
-		<script src="modules/app.js"></script>
+		<script src="app.js"></script>
+		<script src="app.css"></script>
+		<script src="js/controllers/main.controller.js"></script>
+		<script src="js/controllers/first.controller.js"></script>
+		<script src="js/controllers/second.controller.js"></script>
 	</head>
-	<body ng-app="myApp" ng-controller="MyController">
+	<body ng-app="mainApp" ng-controller="MainController">
 		<div>
-			<button ng-click="toggleSpy()">Click here</button>
-			<p ng-show="isSpy">Spy Mode Engaged</p>
-			<p ng-hide="isSpy">Spy Mode Disengaged</p>
+			<button ng-click="togglefirst()">Show Part 1</button>
+			<button ng-click="togglesecond()">Show Part 2</button>
 		</div>
-		<p ng-hide="isSpy">My name is {{fname + ' ' + lname}}</p>
-		<p ng-hide="isSpy">{{fullname()}}</p>
-		<p ng-show="isSpy">The codename is {{codeName}}</p>		
-		<div ng-repeat="employee in employees | limitTo:2 | orderBy:'-salary'">
-		    <p>--------------------------------</p>
-			<p>
-				firstname is {{employee.fname | uppercase | limitTo:4}}
-			</p>
-			<p>
-				lastname is {{employee.lname | lowercase}}
-			</p>
-			<p>
-				salary is {{employee.salary | currency}}
-			</p>
+		<div ng-controller="FirstController" ng-show="displayfirst">
+			<div>
+				<button ng-click="toggleSpy()">Click here</button>
+				<p ng-show="isSpy">Spy Mode Engaged</p>
+				<p ng-hide="isSpy">Spy Mode Disengaged</p>
+			</div>
+			<p ng-hide="isSpy">My name is {{fname + ' ' + lname}}</p>
+			<p ng-hide="isSpy">{{fullname()}}</p>
+			<p ng-show="isSpy">The codename is {{codeName}}</p>		
+			<table style="width:15%">
+			  <tr>
+			    <th>Firstname</th>
+			    <th>Lastname</th> 
+			    <th>Salary</th>
+			  </tr>
+			  <tr ng-repeat="employee in employees | limitTo:2 | orderBy:'-salary'">
+			    <th>{{employee.fname | uppercase | limitTo:4}}</th>
+			    <th>{{employee.lastname | lowercase }}</th> 
+			    <th>{{employee.salary | currency }}</th>
+			  </tr>
+			</table>
+			<div>
+				<button ng-click="count=count+1">Click here</button>
+				<p>Count = {{count}}</p>
+			</div>
 		</div>
-		<div>
-			<button ng-click="count=count+1">Click here</button>
-			<p>Count = {{count}}</p>
-		</div>
-		<div>
-			<button ng-click="toggleSpy()">Click here</button>
-			<p ng-show="isSpy">Spy Mode Engaged</p>
-			<p ng-hide="isSpy">Spy Mode Disengaged</p>
+		<div ng-controller="SecondController" ng-show="displaysecond">
+
 		</div>
 	</body>
 </html>
