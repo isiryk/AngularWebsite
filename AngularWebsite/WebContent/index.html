@@ -4,7 +4,7 @@
 		<title>Angular JS</title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
 		<script src="app.js"></script>
-		<script src="app.css"></script>
+		<link rel="stylesheet" href="app.css">
 		<script src="js/controllers/main.controller.js"></script>
 		<script src="js/controllers/first.controller.js"></script>
 		<script src="js/controllers/second.controller.js"></script>
@@ -41,7 +41,22 @@
 			</div>
 		</div>
 		<div ng-controller="SecondController" ng-show="displaysecond">
-
+			<h2>Reviews</h2>
+			<div ng-repeat="review in reviews">
+				<div class="reviews">
+					<p>{{review.comment}}</p>
+					<p><b>{{review.by}}</b></p>
+				</div>				
+			</div>
+			<form name="reviewForm" ng-submit="addReview()">
+				<p>{{form.comment}}</p>
+				<p>{{form.by}}</p>
+				<label>Comment</label><br/>
+				<textarea ng-model="form.comment"></textarea><br/>
+				<label>Author</label><br/>
+				<input ng-model="form.by" type="email"/><br/>
+				<input type="submit" value="Add Review"/>
+			</form>
 		</div>
 	</body>
 </html>
